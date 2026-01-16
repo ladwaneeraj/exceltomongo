@@ -1,10 +1,9 @@
-name: Command Center Data Sync
+name: Excel to Mongo Sync
 
 on:
   schedule:
-    # Runs every day at 6:30 AM IST (01:00 UTC)
-    - cron: "0 1 * * *"
-  workflow_dispatch: # allows manual run
+    - cron: "0 1 * * *" # 6:30 AM IST
+  workflow_dispatch:
 
 jobs:
   run-script:
@@ -24,8 +23,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run sync script
+      - name: Run Excel to Mongo script
         env:
           MONGO_URI: ${{ secrets.MONGO_URI }}
         run: |
-          python sync_command_center.py
+          python exceltoMongo.py
