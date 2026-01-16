@@ -1,9 +1,10 @@
 import pandas as pd
 from pymongo import MongoClient
 import numpy as np
+import os
 
 # MongoDB connection
-MONGO_URI = "mongodb+srv://anmol:anmol123@cluster0.gvxtfdj.mongodb.net/wellbe?retryWrites=true&w=majority"
+MONGO_URI = os.getenv("MONGO_URI")
 client = MongoClient(MONGO_URI)
 db = client["wellbe"]
 
